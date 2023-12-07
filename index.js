@@ -1,26 +1,3 @@
-// document.addEventListener("DOMContentLoaded", function () {
-//   const animatedText = document.getElementById("animated-text");
-
-//   const words = [
-//     "Software Engineer.",
-//     "lifelong learner.",
-//     "detail-oriented individual.",
-//     "quick learner.",
-//   ];
-//   let index = 0;
-
-//   function changeWord() {
-//     animatedText.textContent = words[index];
-//     index = (index + 1) % words.length;
-//   }
-
-//   // Initial word change
-//   changeWord();
-
-//   // Set interval to change words every 2 seconds
-//   setInterval(changeWord, 2000);
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
   const animatedText = document.getElementById("animated-text");
 

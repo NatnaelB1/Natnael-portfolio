@@ -1,13 +1,10 @@
 body {
   margin: 20px;
   height: 100vh;
-  /* font-family: "Hedvig Letters Sans", sans-serif; */
   font-family: "Inter", sans-serif;
-  /* font-family: "Montserrat", sans-serif; */
 }
 
 .navbar {
-  /* height: 100px; */
   font-size: large;
 }
 
