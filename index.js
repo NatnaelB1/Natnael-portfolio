@@ -49,3 +49,53 @@ document.querySelector(".view-resume").addEventListener("click", function () {
 document.querySelector(".close_btn").addEventListener("click", function () {
   document.querySelector("#resume_screen").style.display = "none";
 });
+
+document
+  .querySelector(".light-theme-btn")
+  .addEventListener("click", function () {
+    document.querySelector("body").style.color = "black";
+    document.querySelector("body").style.backgroundColor = "";
+    document.querySelector(".navbar").classList.remove("navbar-dark");
+    document.querySelector(".navbar").classList.remove("bg-dark");
+    document.querySelector(".navbar").classList.add("bg-light");
+    document.querySelectorAll(".content").forEach(function (element) {
+      element.classList.add("border");
+    });
+    document.querySelectorAll("h3").forEach(function (element) {
+      element.style.color = "black";
+    });
+    document.querySelectorAll("p").forEach(function (element) {
+      element.style.color = "black";
+    });
+    document.querySelectorAll("a").forEach(function (element) {
+      element.style.color = "";
+    });
+    document.querySelectorAll(".dropdown-menu").forEach(function (element) {
+      element.style.backgroundColor = "white";
+    });
+  });
+
+document
+  .querySelector(".dark-theme-btn")
+  .addEventListener("click", function () {
+    document.querySelector("body").style.color = "white";
+    document.querySelector("body").style.backgroundColor = "#000302";
+    document.querySelector(".navbar").classList.add("navbar-dark");
+    document.querySelector(".navbar").classList.add("bg-dark");
+    document.querySelector(".navbar").classList.remove("bg-light");
+    document.querySelectorAll(".content").forEach(function (element) {
+      element.classList.remove("border");
+    });
+    document.querySelectorAll("h3").forEach(function (element) {
+      element.style.color = "white";
+    });
+    document.querySelectorAll("p").forEach(function (element) {
+      element.style.color = "white";
+    });
+    document.querySelectorAll("a").forEach(function (element) {
+      element.style.color = "white";
+    });
+    document.querySelectorAll(".dropdown-menu").forEach(function (element) {
+      element.style.backgroundColor = "black";
+    });
+  });
