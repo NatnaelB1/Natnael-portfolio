@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const words = [
     "Software Engineer.",
-    "lifelong learner.",
-    "detail-oriented individual.",
-    "quick learner.",
+    "Lifelong learner.",
+    "Detail-oriented individual.",
+    "Quick learner.",
   ];
   let index = 0;
 
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 0,
         duration: 800,
         easing: "easeOutQuad",
-        complete: function (anim) {
+        complete: function () {
           target.innerText = newText;
         },
       })
@@ -40,62 +40,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Set interval to change words every 2 seconds
   setInterval(changeWord, 2000);
-});
 
-document.querySelector(".view-resume").addEventListener("click", function () {
-  document.querySelector("#resume_screen").style.display = "inline";
-});
-
-document.querySelector(".close_btn").addEventListener("click", function () {
-  document.querySelector("#resume_screen").style.display = "none";
-});
-
-document
-  .querySelector(".light-theme-btn")
-  .addEventListener("click", function () {
-    document.querySelector("body").style.color = "black";
-    document.querySelector("body").style.backgroundColor = "";
-    document.querySelector(".navbar").classList.remove("navbar-dark");
-    document.querySelector(".navbar").classList.remove("bg-dark");
-    document.querySelector(".navbar").classList.add("bg-light");
-    document.querySelectorAll(".content").forEach(function (element) {
-      element.classList.add("border");
-    });
-    document.querySelectorAll("h3").forEach(function (element) {
-      element.style.color = "black";
-    });
-    document.querySelectorAll("p").forEach(function (element) {
-      element.style.color = "black";
-    });
-    document.querySelectorAll("a").forEach(function (element) {
-      element.style.color = "";
-    });
-    document.querySelectorAll(".dropdown-menu").forEach(function (element) {
-      element.style.backgroundColor = "white";
-    });
+  document.querySelector(".view-resume").addEventListener("click", function () {
+    document.querySelector("#resume_screen").style.display = "inline";
   });
 
-document
-  .querySelector(".dark-theme-btn")
-  .addEventListener("click", function () {
-    document.querySelector("body").style.color = "white";
-    document.querySelector("body").style.backgroundColor = "#000302";
-    document.querySelector(".navbar").classList.add("navbar-dark");
-    document.querySelector(".navbar").classList.add("bg-dark");
-    document.querySelector(".navbar").classList.remove("bg-light");
-    document.querySelectorAll(".content").forEach(function (element) {
-      element.classList.remove("border");
-    });
-    document.querySelectorAll("h3").forEach(function (element) {
-      element.style.color = "white";
-    });
-    document.querySelectorAll("p").forEach(function (element) {
-      element.style.color = "white";
-    });
-    document.querySelectorAll("a").forEach(function (element) {
-      element.style.color = "white";
-    });
-    document.querySelectorAll(".dropdown-menu").forEach(function (element) {
-      element.style.backgroundColor = "black";
-    });
+  document.querySelector(".close_btn").addEventListener("click", function () {
+    document.querySelector("#resume_screen").style.display = "none";
   });
+
+  // Theme Control
+  function applyTheme(theme) {
+    const body = document.querySelector("body");
+    const navbar = document.querySelector(".navbar");
+    const contentElements = document.querySelectorAll(".content");
+    const textElements = document.querySelectorAll("h3, p, a");
+    const dropdownMenus = document.querySelectorAll(".dropdown-menu");
+
+    if (theme === "dark") {
+      body.style.color = "white";
+      body.style.backgroundColor = "#000302";
+      navbar.classList.add("navbar-dark", "bg-dark");
+      navbar.classList.remove("bg-light");
+      contentElements.forEach((el) => el.classList.remove("border"));
+      textElements.forEach((el) => (el.style.color = "white"));
+      dropdownMenus.forEach((el) => (el.style.backgroundColor = "black"));
+    } else {
+      body.style.color = "black";
+      body.style.backgroundColor = "";
+      navbar.classList.add("bg-light");
+      navbar.classList.remove("navbar-dark", "bg-dark");
+      contentElements.forEach((el) => el.classList.add("border"));
+      textElements.forEach((el) => (el.style.color = "black"));
+      dropdownMenus.forEach((el) => (el.style.backgroundColor = "white"));
+    }
+  }
+
+  function setTheme(theme) {
+    localStorage.setItem("theme", theme);
+    applyTheme(theme);
+  }
+
+  function loadTheme() {
+    const storedTheme = localStorage.getItem("theme") || "light"; // Default to light theme
+    applyTheme(storedTheme);
+  }
+
+  // Event Listeners for theme buttons
+  document.querySelector(".light-theme-btn").addEventListener("click", () => {
+    setTheme("light");
+  });
+
+  document.querySelector(".dark-theme-btn").addEventListener("click", () => {
+    setTheme("dark");
+  });
+
+  // Apply the theme on page load
+  loadTheme();
+});
